@@ -1,573 +1,814 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Sunflower Residential School</title>
-
-    <meta name="description"
-          content="Sunflower Residential School - Education, Discipline and Excellence">
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            color: #222;
-            background: #fff;
-            line-height: 1.6;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        /* ================= HEADER ================= */
-
-        header {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            background: white;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
-        }
-
-        .top-bar {
-            background: #123b2a;
-            color: white;
-            padding: 8px 6%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 14px;
-        }
-
-        .navbar {
-            min-height: 75px;
-            padding: 10px 6%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .logo-area {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .logo {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: #f5c518;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 27px;
-        }
-
-        .school-name {
-            color: #123b2a;
-            font-size: 20px;
-            font-weight: 800;
-            line-height: 1.2;
-        }
-
-        .school-name span {
-            color: #d99b00;
-            font-size: 12px;
-            letter-spacing: 1px;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 22px;
-            align-items: center;
-            list-style: none;
-        }
-
-        .nav-links a {
-            font-size: 14px;
-            font-weight: 600;
-            color: #333;
-        }
-
-        .nav-links a:hover {
-            color: #d99b00;
-        }
-
-        .admission-btn {
-            background: #d99b00;
-            color: white !important;
-            padding: 11px 18px;
-            border-radius: 7px;
-        }
-
-        .menu-btn {
-            display: none;
-            font-size: 28px;
-            cursor: pointer;
-        }
-
-        /* ================= HERO ================= */
-
-        .hero {
-            min-height: 650px;
-            background:
-                linear-gradient(rgba(10,45,32,.78), rgba(10,45,32,.78)),
-                url("https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=1600&q=80");
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            align-items: center;
-            padding: 60px 7%;
-            color: white;
-        }
-
-        .hero-content {
-            max-width: 750px;
-        }
-
-        .hero-tag {
-            color: #f5c518;
-            font-weight: bold;
-            letter-spacing: 2px;
-            margin-bottom: 12px;
-        }
-
-        .hero h1 {
-            font-size: clamp(42px, 7vw, 76px);
-            line-height: 1.05;
-            margin-bottom: 20px;
-        }
-
-        .hero h1 span {
-            color: #f5c518;
-        }
-
-        .hero p {
-            max-width: 650px;
-            font-size: 18px;
-            color: #eee;
-            margin-bottom: 30px;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 14px;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 13px 23px;
-            border-radius: 7px;
-            font-weight: bold;
-        }
-
-        .btn-primary {
-            background: #f5c518;
-            color: #123b2a;
-        }
-
-        .btn-secondary {
-            border: 1px solid white;
-            color: white;
-        }
-
-        /* ================= GENERAL ================= */
-
-        section {
-            padding: 80px 7%;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 45px;
-        }
-
-        .section-title small {
-            color: #d99b00;
-            font-weight: bold;
-            letter-spacing: 2px;
-        }
-
-        .section-title h2 {
-            color: #123b2a;
-            font-size: 38px;
-            margin-top: 5px;
-        }
-
-        .section-title p {
-            max-width: 700px;
-            margin: 10px auto;
-            color: #666;
-        }
-
-        /* ================= WELCOME ================= */
-
-        .welcome {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
-        }
-
-        .welcome img {
-            width: 100%;
-            border-radius: 15px;
-        }
-
-        .welcome h2 {
-            color: #123b2a;
-            font-size: 38px;
-            margin-bottom: 18px;
-        }
-
-        .welcome p {
-            color: #666;
-            margin-bottom: 18px;
-        }
-
-        /* ================= CARDS ================= */
-
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-        }
-
-        .card {
-            background: white;
-            padding: 28px 20px;
-            border-radius: 13px;
-            box-shadow: 0 8px 25px rgba(0,0,0,.08);
-            transition: .3s;
-        }
-
-        .card:hover {
-            transform: translateY(-7px);
-        }
-
-        .card-icon {
-            font-size: 35px;
-            margin-bottom: 12px;
-        }
-
-        .card h3 {
-            color: #123b2a;
-            margin-bottom: 8px;
-        }
-
-        .card p {
-            color: #666;
-            font-size: 14px;
-        }
-
-        /* ================= WHY US ================= */
-
-        .why-us {
-            background: #f6f8f5;
-        }
-
-        /* ================= RESIDENTIAL ================= */
-
-        .residential {
-            background:
-                linear-gradient(rgba(18,59,42,.9), rgba(18,59,42,.9)),
-                url("https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1600&q=80");
-            background-size: cover;
-            background-position: center;
-            color: white;
-            text-align: center;
-        }
-
-        .residential h2 {
-            font-size: 40px;
-            margin-bottom: 15px;
-        }
-
-        .residential p {
-            max-width: 750px;
-            margin: auto auto 30px;
-            color: #eee;
-        }
-
-        /* ================= PORTAL ================= */
-
-        .portal {
-            background: #fffaf0;
-        }
-
-        .portal-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-        }
-
-        .portal-card {
-            padding: 30px 20px;
-            background: white;
-            border-radius: 12px;
-            text-align: center;
-            box-shadow: 0 5px 20px rgba(0,0,0,.07);
-        }
-
-        .portal-card div {
-            font-size: 38px;
-            margin-bottom: 10px;
-        }
-
-        .portal-card h3 {
-            color: #123b2a;
-        }
-
-        /* ================= NOTICES ================= */
-
-        .notice-list {
-            max-width: 900px;
-            margin: auto;
-        }
-
-        .notice {
-            padding: 18px 20px;
-            border-left: 5px solid #d99b00;
-            background: #f7f7f7;
-            margin-bottom: 12px;
-            border-radius: 5px;
-        }
-
-        .notice strong {
-            color: #123b2a;
-        }
-
-        /* ================= GALLERY ================= */
-
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-        }
-
-        .gallery img {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-            border-radius: 10px;
-        }
-
-        /* ================= CONTACT ================= */
-
-        .contact {
-            background: #f6f8f5;
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-        }
-
-        .contact-box {
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 5px 20px rgba(0,0,0,.06);
-        }
-
-        .contact-box h3 {
-            color: #123b2a;
-            margin-bottom: 15px;
-        }
-
-        .contact-box p {
-            margin: 10px 0;
-            color: #555;
-        }
-
-        /* ================= FOOTER ================= */
-
-        footer {
-            background: #0d2d21;
-            color: white;
-            padding: 50px 7% 20px;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 35px;
-            margin-bottom: 35px;
-        }
-
-        footer h3 {
-            margin-bottom: 15px;
-        }
-
-        footer p,
-        footer li {
-            color: #ccc;
-            font-size: 14px;
-            margin-bottom: 8px;
-        }
-
-        footer ul {
-            list-style: none;
-        }
-
-        .copyright {
-            border-top: 1px solid rgba(255,255,255,.15);
-            padding-top: 20px;
-            text-align: center;
-            color: #aaa;
-            font-size: 13px;
-        }
-
-        /* ================= MOBILE ================= */
-
-        @media(max-width: 1000px) {
-
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: white;
-                flex-direction: column;
-                padding: 25px;
-                box-shadow: 0 8px 20px rgba(0,0,0,.1);
-            }
-
-            .nav-links.active {
-                display: flex;
-            }
-
-            .menu-btn {
-                display: block;
-            }
-
-            .cards,
-            .portal-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .footer-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media(max-width: 700px) {
-
-            .top-bar {
-                justify-content: center;
-                text-align: center;
-            }
-
-            .top-bar span:last-child {
-                display: none;
-            }
-
-            .school-name {
-                font-size: 16px;
-            }
-
-            .school-name span {
-                font-size: 9px;
-            }
-
-            .hero {
-                min-height: 580px;
-            }
-
-            .hero h1 {
-                font-size: 45px;
-            }
-
-            .hero p {
-                font-size: 16px;
-            }
-
-            section {
-                padding: 60px 5%;
-            }
-
-            .welcome,
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .cards,
-            .portal-grid,
-            .gallery,
-            .footer-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .section-title h2,
-            .welcome h2,
-            .residential h2 {
-                font-size: 30px;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Sunflower Residential School | Gidhani, Deoghar</title>
+
+<meta name="description" content="Sunflower Residential School, Gidhani, Deoghar. Quality education, residential facilities and holistic development for students from Classes 1 to 8.">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+:root{
+    --green:#123b2a;
+    --dark-green:#0b281d;
+    --yellow:#f5c518;
+    --gold:#d99b00;
+    --light:#f6f8f5;
+    --cream:#fffaf0;
+    --text:#222;
+    --muted:#666;
+    --white:#fff;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    color:var(--text);
+    background:white;
+    line-height:1.6;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+img{
+    max-width:100%;
+    display:block;
+}
+
+section{
+    padding:80px 6%;
+}
+
+.container{
+    max-width:1200px;
+    margin:auto;
+}
+
+/* ================= TOP BAR ================= */
+
+.topbar{
+    background:var(--dark-green);
+    color:white;
+    padding:8px 5%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-size:13px;
+}
+
+/* ================= NAVBAR ================= */
+
+header{
+    position:sticky;
+    top:0;
+    z-index:999;
+    background:white;
+    box-shadow:0 3px 15px rgba(0,0,0,.1);
+}
+
+.navbar{
+    min-height:78px;
+    padding:10px 5%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.logo{
+    width:58px;
+    height:58px;
+    border-radius:50%;
+    object-fit:cover;
+    border:2px solid var(--yellow);
+}
+
+.brand-text{
+    color:var(--green);
+    font-weight:800;
+    line-height:1.15;
+    font-size:18px;
+}
+
+.brand-text small{
+    display:block;
+    color:var(--gold);
+    font-size:10px;
+    letter-spacing:1.5px;
+    margin-top:4px;
+}
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:20px;
+    list-style:none;
+}
+
+.nav-links a{
+    font-size:13px;
+    font-weight:700;
+    color:#333;
+}
+
+.nav-links a:hover{
+    color:var(--gold);
+}
+
+.portal-btn{
+    background:var(--green);
+    color:white !important;
+    padding:10px 15px;
+    border-radius:7px;
+}
+
+.menu-btn{
+    display:none;
+    font-size:28px;
+    cursor:pointer;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+    min-height:650px;
+    display:flex;
+    align-items:center;
+    position:relative;
+    color:white;
+    background:
+        linear-gradient(rgba(8,38,27,.72),rgba(8,38,27,.82)),
+        url("IMG-20260908-WA0019.jpg");
+    background-size:cover;
+    background-position:center;
+}
+
+.hero-content{
+    max-width:780px;
+}
+
+.hero-tag{
+    color:var(--yellow);
+    font-weight:800;
+    letter-spacing:2px;
+    margin-bottom:15px;
+}
+
+.hero h1{
+    font-size:clamp(42px,7vw,75px);
+    line-height:1.05;
+    margin-bottom:20px;
+}
+
+.hero h1 span{
+    color:var(--yellow);
+}
+
+.hero p{
+    font-size:18px;
+    color:#eee;
+    max-width:680px;
+    margin-bottom:30px;
+}
+
+.buttons{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    display:inline-block;
+    padding:13px 21px;
+    border-radius:7px;
+    font-weight:700;
+}
+
+.btn-yellow{
+    background:var(--yellow);
+    color:var(--green);
+}
+
+.btn-outline{
+    border:1px solid white;
+    color:white;
+}
+
+.btn-green{
+    background:var(--green);
+    color:white;
+}
+
+/* ================= SECTION TITLE ================= */
+
+.section-title{
+    text-align:center;
+    margin-bottom:45px;
+}
+
+.section-title small{
+    color:var(--gold);
+    font-weight:800;
+    letter-spacing:2px;
+}
+
+.section-title h2{
+    color:var(--green);
+    font-size:38px;
+    margin:5px 0 10px;
+}
+
+.section-title p{
+    max-width:700px;
+    margin:auto;
+    color:var(--muted);
+}
+
+/* ================= ABOUT ================= */
+
+.about-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:50px;
+    align-items:center;
+}
+
+.about-img{
+    border-radius:15px;
+    width:100%;
+    height:450px;
+    object-fit:cover;
+    box-shadow:0 10px 30px rgba(0,0,0,.15);
+}
+
+.about-content h2{
+    color:var(--green);
+    font-size:38px;
+    line-height:1.2;
+    margin-bottom:18px;
+}
+
+.about-content p{
+    color:var(--muted);
+    margin-bottom:15px;
+}
+
+.info-list{
+    list-style:none;
+    margin:20px 0;
+}
+
+.info-list li{
+    margin:9px 0;
+    font-weight:600;
+}
+
+/* ================= CARDS ================= */
+
+.light-section{
+    background:var(--light);
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+}
+
+.card{
+    background:white;
+    padding:28px 22px;
+    border-radius:14px;
+    box-shadow:0 7px 25px rgba(0,0,0,.07);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-6px);
+}
+
+.icon{
+    font-size:35px;
+    margin-bottom:12px;
+}
+
+.card h3{
+    color:var(--green);
+    margin-bottom:8px;
+}
+
+.card p{
+    color:var(--muted);
+    font-size:14px;
+}
+
+/* ================= PRINCIPAL ================= */
+
+.principal{
+    background:var(--cream);
+}
+
+.principal-box{
+    max-width:900px;
+    margin:auto;
+    text-align:center;
+    background:white;
+    padding:45px 30px;
+    border-radius:16px;
+    box-shadow:0 8px 25px rgba(0,0,0,.07);
+}
+
+.principal-box .quote{
+    font-size:20px;
+    color:#555;
+    font-style:italic;
+    margin-bottom:20px;
+}
+
+.principal-box h3{
+    color:var(--green);
+    font-size:22px;
+}
+
+.principal-box span{
+    color:var(--gold);
+}
+
+/* ================= RESIDENTIAL ================= */
+
+.residential{
+    background:
+        linear-gradient(rgba(18,59,42,.9),rgba(18,59,42,.9)),
+        url("IMG-20260908-WA0016.jpg");
+    background-size:cover;
+    background-position:center;
+    color:white;
+    text-align:center;
+}
+
+.residential h2{
+    color:white;
+    font-size:40px;
+    margin-bottom:15px;
+}
+
+.residential p{
+    max-width:760px;
+    margin:0 auto 28px;
+    color:#eee;
+}
+
+/* ================= PORTAL ================= */
+
+.portal{
+    background:#fffaf0;
+}
+
+.portal-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+}
+
+.portal-card{
+    background:white;
+    border-radius:14px;
+    padding:30px 20px;
+    text-align:center;
+    box-shadow:0 7px 25px rgba(0,0,0,.07);
+}
+
+.portal-card .icon{
+    font-size:38px;
+}
+
+.portal-card h3{
+    color:var(--green);
+    margin-bottom:8px;
+}
+
+.portal-card p{
+    color:var(--muted);
+    font-size:14px;
+}
+
+.portal-card a{
+    display:inline-block;
+    margin-top:15px;
+    color:var(--gold);
+    font-weight:bold;
+}
+
+/* ================= HOMEWORK ================= */
+
+.homework-box{
+    max-width:900px;
+    margin:auto;
+    background:white;
+    border-radius:16px;
+    padding:35px;
+    box-shadow:0 8px 25px rgba(0,0,0,.08);
+}
+
+.form-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+}
+
+.form-group{
+    display:flex;
+    flex-direction:column;
+}
+
+.form-group label{
+    font-weight:bold;
+    margin-bottom:6px;
+    color:var(--green);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea{
+    width:100%;
+    padding:12px;
+    border:1px solid #ddd;
+    border-radius:7px;
+    outline:none;
+}
+
+.form-group textarea{
+    min-height:110px;
+    resize:vertical;
+}
+
+.full{
+    grid-column:1/-1;
+}
+
+.demo-note{
+    margin-top:18px;
+    background:#fff7d6;
+    padding:12px;
+    border-radius:7px;
+    color:#725d00;
+    font-size:13px;
+}
+
+/* ================= COMPLAINT ================= */
+
+.complaint-section{
+    background:var(--light);
+}
+
+.complaint-types{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+    margin-bottom:30px;
+}
+
+.complaint-type{
+    background:white;
+    padding:22px;
+    text-align:center;
+    border-radius:12px;
+    box-shadow:0 5px 20px rgba(0,0,0,.06);
+}
+
+.complaint-type strong{
+    display:block;
+    color:var(--green);
+    margin-top:7px;
+}
+
+/* ================= NOTICES ================= */
+
+.notice-list{
+    max-width:900px;
+    margin:auto;
+}
+
+.notice{
+    background:#f7f7f7;
+    border-left:5px solid var(--gold);
+    padding:18px 20px;
+    margin-bottom:12px;
+    border-radius:5px;
+}
+
+.notice strong{
+    color:var(--green);
+}
+
+/* ================= GALLERY ================= */
+
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+}
+
+.gallery-item{
+    overflow:hidden;
+    border-radius:12px;
+    height:250px;
+    background:#eee;
+}
+
+.gallery-item img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:.4s;
+}
+
+.gallery-item:hover img{
+    transform:scale(1.05);
+}
+
+/* ================= ADMISSION ================= */
+
+.admission{
+    background:var(--green);
+    color:white;
+    text-align:center;
+}
+
+.admission h2{
+    font-size:40px;
+    margin-bottom:12px;
+}
+
+.admission p{
+    max-width:700px;
+    margin:0 auto 25px;
+    color:#eee;
+}
+
+/* ================= CONTACT ================= */
+
+.contact{
+    background:var(--light);
+}
+
+.contact-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:25px;
+}
+
+.contact-box{
+    background:white;
+    padding:30px;
+    border-radius:14px;
+    box-shadow:0 6px 22px rgba(0,0,0,.06);
+}
+
+.contact-box h3{
+    color:var(--green);
+    margin-bottom:15px;
+}
+
+.contact-box p{
+    color:#555;
+    margin:10px 0;
+}
+
+.contact-actions{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-top:20px;
+}
+
+.whatsapp{
+    background:#168c3a;
+    color:white;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    background:var(--dark-green);
+    color:white;
+    padding:50px 6% 20px;
+}
+
+.footer-grid{
+    max-width:1200px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr 1fr;
+    gap:30px;
+}
+
+footer h3{
+    margin-bottom:15px;
+}
+
+footer p,
+footer li{
+    color:#ccc;
+    font-size:14px;
+    margin-bottom:8px;
+}
+
+footer ul{
+    list-style:none;
+}
+
+.copyright{
+    max-width:1200px;
+    margin:30px auto 0;
+    padding-top:20px;
+    border-top:1px solid rgba(255,255,255,.15);
+    text-align:center;
+    color:#aaa;
+    font-size:13px;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:1000px){
+
+    .nav-links{
+        display:none;
+        position:absolute;
+        top:78px;
+        left:0;
+        width:100%;
+        background:white;
+        padding:20px;
+        flex-direction:column;
+        box-shadow:0 8px 20px rgba(0,0,0,.12);
+    }
+
+    .nav-links.active{
+        display:flex;
+    }
+
+    .menu-btn{
+        display:block;
+    }
+
+    .cards,
+    .portal-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .footer-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:700px){
+
+    .topbar{
+        justify-content:center;
+        text-align:center;
+    }
+
+    .topbar span:last-child{
+        display:none;
+    }
+
+    .brand-text{
+        font-size:14px;
+    }
+
+    .brand-text small{
+        font-size:8px;
+    }
+
+    .logo{
+        width:48px;
+        height:48px;
+    }
+
+    .hero{
+        min-height:600px;
+    }
+
+    .hero h1{
+        font-size:43px;
+    }
+
+    .hero p{
+        font-size:16px;
+    }
+
+    section{
+        padding:60px 5%;
+    }
+
+    .about-grid,
+    .contact-grid{
+        grid-template-columns:1fr;
+    }
+
+    .about-img{
+        height:330px;
+    }
+
+    .cards,
+    .portal-grid,
+    .complaint-types,
+    .gallery,
+    .footer-grid{
+        grid-template-columns:1fr;
+    }
+
+    .form-grid{
+        grid-template-columns:1fr;
+    }
+
+    .section-title h2,
+    .about-content h2{
+        font-size:30px;
+    }
+
+    .residential h2,
+    .admission h2{
+        font-size:31px;
+    }
+
+    .gallery-item{
+        height:280px;
+    }
+}
+</style>
 </head>
 
 <body>
+
+<!-- ================= TOP BAR ================= -->
+
+<div class="topbar">
+    <span>🌻 Welcome to Sunflower Residential School</span>
+    <span>📞 9304485717</span>
+</div>
 
 <!-- ================= HEADER ================= -->
 
 <header>
 
-    <div class="top-bar">
-        <span>🌻 Welcome to Sunflower Residential School</span>
-        <span>📞 Admission Helpline: +91 XXXXX XXXXX</span>
-    </div>
+<nav class="navbar">
 
-    <nav class="navbar">
+    <a href="#home" class="brand">
 
-        <a href="#home" class="logo-area">
-            <div class="logo">🌻</div>
+        <img
+            src="IMG-20260908-WA0025.jpg"
+            class="logo"
+            alt="Sunflower Residential School Logo">
 
-            <div class="school-name">
-                SUNFLOWER<br>
-                <span>RESIDENTIAL SCHOOL</span>
-            </div>
-        </a>
+        <div class="brand-text">
+            SUNFLOWER RESIDENTIAL SCHOOL
+            <small>GIDHANI, DEOGHAR</small>
+        </div>
 
-        <div class="menu-btn" onclick="toggleMenu()">☰</div>
+    </a>
 
-        <ul class="nav-links" id="navLinks">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#academics">Academics</a></li>
-            <li><a href="#residential">Residential</a></li>
-            <li><a href="#facilities">Facilities</a></li>
-            <li><a href="#notices">Notices</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li>
-                <a href="#portal" class="admission-btn">
-                    Portal
-                </a>
-            </li>
-        </ul>
+    <div class="menu-btn" onclick="toggleMenu()">☰</div>
 
-    </nav>
+    <ul class="nav-links" id="navLinks">
+
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#academics">Academics</a></li>
+        <li><a href="#residential">Residential</a></li>
+        <li><a href="#facilities">Facilities</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#notices">Notices</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#portal" class="portal-btn">Portal</a></li>
+
+    </ul>
+
+</nav>
 
 </header>
-
 
 <!-- ================= HERO ================= -->
 
 <section class="hero" id="home">
+
+<div class="container">
 
     <div class="hero-content">
 
@@ -581,18 +822,19 @@
         </h1>
 
         <p>
-            Welcome to Sunflower Residential School, where
-            education, discipline, values and care come together
-            to prepare students for a bright future.
+            Welcome to Sunflower Residential School,
+            Gidhani, Deoghar — a caring and disciplined
+            learning environment for students from
+            Classes 1 to 8.
         </p>
 
-        <div class="hero-buttons">
+        <div class="buttons">
 
-            <a href="#admissions" class="btn btn-primary">
+            <a href="#admission" class="btn btn-yellow">
                 Apply for Admission
             </a>
 
-            <a href="#about" class="btn btn-secondary">
+            <a href="#about" class="btn btn-outline">
                 Explore Our School
             </a>
 
@@ -600,63 +842,79 @@
 
     </div>
 
+</div>
+
 </section>
 
-
-<!-- ================= WELCOME ================= -->
+<!-- ================= ABOUT ================= -->
 
 <section id="about">
 
-    <div class="welcome">
+<div class="container">
+
+    <div class="about-grid">
 
         <div>
             <img
-                src="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=1000&q=80"
-                alt="Students">
+                src="IMG-20260908-WA0019.jpg"
+                alt="Sunflower Residential School"
+                class="about-img">
         </div>
 
-        <div>
+        <div class="about-content">
 
             <h2>
                 Welcome to Sunflower Residential School
             </h2>
 
             <p>
-                Sunflower Residential School is committed to
-                providing quality education in a safe,
-                disciplined and caring environment.
+                Sunflower Residential School, Gidhani, Deoghar
+                is committed to providing quality education
+                in a safe, disciplined and caring environment.
             </p>
 
             <p>
-                Our goal is to develop academically strong,
-                confident, responsible and compassionate
-                individuals.
+                We focus on academic learning, discipline,
+                confidence, values and the overall development
+                of every student.
             </p>
 
-            <a href="#academics" class="btn btn-primary">
-                Discover More
+            <ul class="info-list">
+
+                <li>📚 Classes: 1 to 8</li>
+                <li>👩‍🏫 Principal: Sadhna Singh</li>
+                <li>📍 Gidhani, Deoghar</li>
+                <li>🕣 Current Timing: 8:30 AM – 2:00 PM</li>
+
+            </ul>
+
+            <a href="#academics" class="btn btn-green">
+                Learn More
             </a>
 
         </div>
 
     </div>
 
-</section>
+</div>
 
+</section>
 
 <!-- ================= WHY CHOOSE US ================= -->
 
-<section class="why-us" id="facilities">
+<section class="light-section" id="facilities">
+
+<div class="container">
 
     <div class="section-title">
 
         <small>WHY CHOOSE US</small>
 
-        <h2>Everything Students Need</h2>
+        <h2>Growing With Care & Confidence</h2>
 
         <p>
-            A balanced environment for learning,
-            personal growth and overall development.
+            A balanced environment where students can
+            learn, grow and develop their potential.
         </p>
 
     </div>
@@ -664,59 +922,62 @@
     <div class="cards">
 
         <div class="card">
-            <div class="card-icon">📚</div>
+            <div class="icon">📚</div>
             <h3>Quality Education</h3>
             <p>
                 Focused academic learning with
-                experienced teachers.
+                dedicated teaching and guidance.
             </p>
         </div>
 
         <div class="card">
-            <div class="card-icon">🏠</div>
+            <div class="icon">🏠</div>
             <h3>Residential Life</h3>
             <p>
-                Safe and comfortable residential
+                A structured and caring residential
                 environment for students.
             </p>
         </div>
 
         <div class="card">
-            <div class="card-icon">⚽</div>
+            <div class="icon">⚽</div>
             <h3>Sports & Activities</h3>
             <p>
-                Sports, cultural activities and
-                extracurricular development.
+                Encouraging students through sports,
+                activities and cultural programmes.
             </p>
         </div>
 
         <div class="card">
-            <div class="card-icon">🛡️</div>
-            <h3>Safety & Care</h3>
+            <div class="icon">🛡️</div>
+            <h3>Safety & Discipline</h3>
             <p>
-                A disciplined and caring environment
-                for every student.
+                We promote discipline, responsibility
+                and a caring school environment.
             </p>
         </div>
 
     </div>
 
-</section>
+</div>
 
+</section>
 
 <!-- ================= ACADEMICS ================= -->
 
 <section id="academics">
 
+<div class="container">
+
     <div class="section-title">
 
         <small>ACADEMICS</small>
 
-        <h2>Learning for a Better Future</h2>
+        <h2>Learning For A Better Future</h2>
 
         <p>
-            Strong academics combined with practical
-            learning and personality development.
+            Academic learning combined with activities
+            that support students' overall development.
         </p>
 
     </div>
@@ -724,79 +985,176 @@
     <div class="cards">
 
         <div class="card">
-            <div class="card-icon">📖</div>
+            <div class="icon">📖</div>
             <h3>Curriculum</h3>
             <p>
-                Structured learning according to the
-                school's academic curriculum.
+                Structured academic learning for
+                Classes 1 to 8.
             </p>
         </div>
 
         <div class="card">
-            <div class="card-icon">🔬</div>
+            <div class="icon">🔬</div>
             <h3>Practical Learning</h3>
             <p>
                 Learning through activities,
-                experiments and projects.
+                projects and practical experiences.
             </p>
         </div>
 
         <div class="card">
-            <div class="card-icon">💻</div>
+            <div class="icon">💻</div>
             <h3>Digital Learning</h3>
             <p>
-                Technology-supported learning for
-                modern education.
+                Technology can support modern
+                classroom learning.
             </p>
         </div>
 
         <div class="card">
-            <div class="card-icon">🏆</div>
-            <h3>Achievements</h3>
+            <div class="icon">🏆</div>
+            <h3>Student Development</h3>
             <p>
-                Encouraging students to participate
-                and achieve their goals.
+                Encouraging confidence, discipline,
+                creativity and responsibility.
             </p>
         </div>
 
     </div>
 
+</div>
+
 </section>
 
+<!-- ================= PRINCIPAL ================= -->
+
+<section class="principal">
+
+<div class="container">
+
+    <div class="section-title">
+
+        <small>PRINCIPAL'S MESSAGE</small>
+
+        <h2>Message From Our Principal</h2>
+
+    </div>
+
+    <div class="principal-box">
+
+        <div class="quote">
+            "Education is not only about learning from
+            books; it is also about building character,
+            confidence and responsible citizens."
+        </div>
+
+        <h3>
+            Sadhna Singh
+        </h3>
+
+        <span>Principal, Sunflower Residential School</span>
+
+    </div>
+
+</div>
+
+</section>
 
 <!-- ================= RESIDENTIAL ================= -->
 
 <section class="residential" id="residential">
 
+<div class="container">
+
     <h2>🏠 A Home Away From Home</h2>
 
     <p>
-        Our residential facilities are designed to provide
-        students with a safe, disciplined and comfortable
-        environment where they can learn, grow and build
-        lifelong friendships.
+        Our residential environment aims to provide students
+        with care, discipline, learning time and opportunities
+        for personal growth.
     </p>
 
-    <a href="#contact" class="btn btn-primary">
-        Explore Residential Life
+    <a href="#contact" class="btn btn-yellow">
+        Enquire About Residential Life
     </a>
+
+</div>
 
 </section>
 
+<!-- ================= FACILITIES ================= -->
 
-<!-- ================= STUDENT PORTAL ================= -->
+<section>
+
+<div class="container">
+
+    <div class="section-title">
+
+        <small>FACILITIES</small>
+
+        <h2>Our School Facilities</h2>
+
+    </div>
+
+    <div class="cards">
+
+        <div class="card">
+            <div class="icon">🏫</div>
+            <h3>Classrooms</h3>
+            <p>
+                Learning spaces designed for
+                classroom education.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">📚</div>
+            <h3>Library</h3>
+            <p>
+                Books and learning resources for
+                students.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">⚽</div>
+            <h3>Sports</h3>
+            <p>
+                Opportunities for sports and
+                physical activities.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🖥️</div>
+            <h3>Technology</h3>
+            <p>
+                Digital tools supporting
+                modern learning.
+            </p>
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+<!-- ================= DIGITAL PORTAL ================= -->
 
 <section class="portal" id="portal">
+
+<div class="container">
 
     <div class="section-title">
 
         <small>DIGITAL SCHOOL PORTAL</small>
 
-        <h2>Student & Parent Services</h2>
+        <h2>Student, Parent & Teacher Services</h2>
 
         <p>
-            Important school services available through
-            the digital portal.
+            Digital services that we can connect to the
+            school's secure system.
         </p>
 
     </div>
@@ -804,47 +1162,292 @@
     <div class="portal-grid">
 
         <div class="portal-card">
-            <div>📝</div>
+
+            <div class="icon">📝</div>
+
             <h3>Homework</h3>
+
             <p>
-                View class homework and assignments.
+                Students can view homework according
+                to their class.
             </p>
+
+            <a href="#homework">
+                View Homework →
+            </a>
+
         </div>
 
         <div class="portal-card">
-            <div>🚨</div>
+
+            <div class="icon">🚨</div>
+
             <h3>Complaint</h3>
+
             <p>
-                Students, parents and teachers can
-                submit concerns.
+                Student, parent and teacher
+                complaint system.
             </p>
+
+            <a href="#complaint">
+                Submit Complaint →
+            </a>
+
         </div>
 
         <div class="portal-card">
-            <div>📊</div>
+
+            <div class="icon">📊</div>
+
             <h3>Attendance</h3>
+
             <p>
-                Check student attendance records.
+                Attendance information can be
+                connected to the portal.
             </p>
+
         </div>
 
         <div class="portal-card">
-            <div>💰</div>
-            <h3>Fees</h3>
+
+            <div class="icon">📈</div>
+
+            <h3>Results</h3>
+
             <p>
-                View fee information and payment
-                records.
+                Student examination results and
+                academic records.
             </p>
+
         </div>
 
     </div>
 
+</div>
+
 </section>
 
+<!-- ================= HOMEWORK ================= -->
+
+<section id="homework">
+
+<div class="container">
+
+    <div class="section-title">
+
+        <small>HOMEWORK PORTAL</small>
+
+        <h2>Check Your Homework</h2>
+
+        <p>
+            Students will be able to enter their details
+            and view homework for their class.
+        </p>
+
+    </div>
+
+    <div class="homework-box">
+
+        <div class="form-grid">
+
+            <div class="form-group">
+
+                <label>Student Name</label>
+
+                <input
+                    type="text"
+                    placeholder="Enter your name">
+
+            </div>
+
+            <div class="form-group">
+
+                <label>Class</label>
+
+                <select>
+
+                    <option>Select Class</option>
+                    <option>Class 1</option>
+                    <option>Class 2</option>
+                    <option>Class 3</option>
+                    <option>Class 4</option>
+                    <option>Class 5</option>
+                    <option>Class 6</option>
+                    <option>Class 7</option>
+                    <option>Class 8</option>
+
+                </select>
+
+            </div>
+
+            <div class="form-group">
+
+                <label>Roll Number</label>
+
+                <input
+                    type="text"
+                    placeholder="Enter roll number">
+
+            </div>
+
+            <div class="form-group full">
+
+                <button
+                    type="button"
+                    class="btn btn-green"
+                    onclick="demoMessage('Homework system will be connected to the school database in the next phase.')">
+
+                    View Homework
+
+                </button>
+
+            </div>
+
+        </div>
+
+        <div class="demo-note">
+            ℹ️ This is currently the website interface.
+            The real homework database and teacher upload
+            system will be connected in the next phase.
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+<!-- ================= COMPLAINT ================= -->
+
+<section class="complaint-section" id="complaint">
+
+<div class="container">
+
+    <div class="section-title">
+
+        <small>COMPLAINT & GRIEVANCE</small>
+
+        <h2>We Listen & We Care</h2>
+
+        <p>
+            Students, parents and teachers will be able
+            to submit concerns through the school portal.
+        </p>
+
+    </div>
+
+    <div class="complaint-types">
+
+        <div class="complaint-type">
+            👨‍🎓
+            <strong>Student Complaint</strong>
+            <p>Students can report school-related concerns.</p>
+        </div>
+
+        <div class="complaint-type">
+            👨‍👩‍👧
+            <strong>Parent Complaint</strong>
+            <p>Parents can communicate concerns to the school.</p>
+        </div>
+
+        <div class="complaint-type">
+            👨‍🏫
+            <strong>Teacher Issue</strong>
+            <p>Teachers can report school-related issues.</p>
+        </div>
+
+    </div>
+
+    <div class="homework-box">
+
+        <div class="form-grid">
+
+            <div class="form-group">
+
+                <label>Your Name</label>
+
+                <input
+                    type="text"
+                    placeholder="Enter your name">
+
+            </div>
+
+            <div class="form-group">
+
+                <label>You are</label>
+
+                <select>
+
+                    <option>Select</option>
+                    <option>Student</option>
+                    <option>Parent</option>
+                    <option>Teacher</option>
+
+                </select>
+
+            </div>
+
+            <div class="form-group">
+
+                <label>Category</label>
+
+                <select>
+
+                    <option>Select Category</option>
+                    <option>Academic</option>
+                    <option>Teacher</option>
+                    <option>Hostel</option>
+                    <option>Food / Mess</option>
+                    <option>Transport</option>
+                    <option>Facilities</option>
+                    <option>Safety</option>
+                    <option>Other</option>
+
+                </select>
+
+            </div>
+
+            <div class="form-group full">
+
+                <label>Complaint / Concern</label>
+
+                <textarea
+                    placeholder="Write your concern here..."></textarea>
+
+            </div>
+
+            <div class="form-group full">
+
+                <button
+                    type="button"
+                    class="btn btn-green"
+                    onclick="demoMessage('Complaint system will be connected to the secure school database in the next phase.')">
+
+                    Submit Complaint
+
+                </button>
+
+            </div>
+
+        </div>
+
+        <div class="demo-note">
+            🔒 For student safety and privacy, the final
+            complaint system will use secure login and
+            database storage.
+        </div>
+
+    </div>
+
+</div>
+
+</section>
 
 <!-- ================= NOTICES ================= -->
 
 <section id="notices">
+
+<div class="container">
 
     <div class="section-title">
 
@@ -857,93 +1460,132 @@
     <div class="notice-list">
 
         <div class="notice">
-            📢 <strong>Admission Notice</strong><br>
-            New admission information will appear here.
+            📢 <strong>School Notice</strong><br>
+            Important school announcements will appear here.
         </div>
 
         <div class="notice">
-            📅 <strong>School Calendar</strong><br>
-            Upcoming events and important dates.
+            📅 <strong>School Events</strong><br>
+            Upcoming events and activities will be updated here.
         </div>
 
         <div class="notice">
             📝 <strong>Examination Notice</strong><br>
-            Examination related information.
+            Examination related information will appear here.
         </div>
 
     </div>
 
-</section>
+</div>
 
+</section>
 
 <!-- ================= GALLERY ================= -->
 
-<section>
+<section id="gallery">
+
+<div class="container">
 
     <div class="section-title">
 
-        <small>OUR CAMPUS</small>
+        <small>OUR MEMORIES</small>
 
         <h2>School Gallery</h2>
+
+        <p>
+            A glimpse of activities and celebrations
+            at Sunflower Residential School.
+        </p>
 
     </div>
 
     <div class="gallery">
 
-        <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=800&q=80" alt="Campus">
+        <div class="gallery-item">
+            <img src="IMG-20260908-WA0019.jpg"
+                 alt="Sunflower School Activity">
+        </div>
 
-        <img src="https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=800&q=80" alt="School">
+        <div class="gallery-item">
+            <img src="IMG-20260908-WA0016.jpg"
+                 alt="Sunflower School Students">
+        </div>
 
-        <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=800&q=80" alt="Students">
+        <div class="gallery-item">
+            <img src="IMG-20260908-WA0007.jpg"
+                 alt="School Celebration">
+        </div>
 
-        <img src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?auto=format&fit=crop&w=800&q=80" alt="Classroom">
+        <div class="gallery-item">
+            <img src="IMG-20260908-WA0010.jpg"
+                 alt="School Event">
+        </div>
 
-        <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=800&q=80" alt="Students">
+        <div class="gallery-item">
+            <img src="IMG-20260908-WA0020.jpg"
+                 alt="School Event">
+        </div>
 
-        <img src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?auto=format&fit=crop&w=800&q=80" alt="Campus">
+        <div class="gallery-item">
+            <img src="IMG-20260908-WA0025.jpg"
+                 alt="Sunflower Residential School Logo">
+        </div>
 
     </div>
+
+</div>
 
 </section>
 
-
 <!-- ================= ADMISSION ================= -->
 
-<section id="admissions" class="why-us">
+<section class="admission" id="admission">
 
-    <div class="section-title">
+<div class="container">
 
-        <small>ADMISSIONS</small>
+    <h2>Start Your Child's Journey With Us</h2>
 
-        <h2>Start Your Child's Journey With Us</h2>
+    <p>
+        For admission information and enquiry,
+        contact Sunflower Residential School.
+    </p>
 
-        <p>
-            Get information about admission,
-            eligibility and required documents.
-        </p>
+    <div class="buttons" style="justify-content:center;">
 
-    </div>
+        <a
+            href="tel:+919304485717"
+            class="btn btn-yellow">
 
-    <div style="text-align:center;">
+            📞 Call School
 
-        <a href="#contact" class="btn btn-primary">
-            Admission Enquiry
+        </a>
+
+        <a
+            href="https://wa.me/919304485717"
+            target="_blank"
+            class="btn btn-outline">
+
+            💬 WhatsApp Us
+
         </a>
 
     </div>
 
-</section>
+</div>
 
+</section>
 
 <!-- ================= CONTACT ================= -->
 
 <section class="contact" id="contact">
 
+<div class="container">
+
     <div class="section-title">
 
         <small>CONTACT US</small>
 
-        <h2>We Would Love to Hear From You</h2>
+        <h2>Get In Touch With Us</h2>
 
     </div>
 
@@ -951,121 +1593,149 @@
 
         <div class="contact-box">
 
-            <h3>📍 School Information</h3>
+            <h3>🏫 School Information</h3>
 
             <p>
                 <strong>Sunflower Residential School</strong>
             </p>
 
-            <p>
-                📍 Your School Address Here
-            </p>
+            <p>📍 Gidhani, Deoghar</p>
 
-            <p>
-                📞 +91 XXXXX XXXXX
-            </p>
+            <p>👩‍🏫 Principal: Sadhna Singh</p>
 
-            <p>
-                ✉️ school@example.com
-            </p>
+            <p>📚 Classes: 1 to 8</p>
+
+            <p>🕣 Current Timing: 8:30 AM – 2:00 PM</p>
 
         </div>
 
         <div class="contact-box">
 
-            <h3>📞 Admission Enquiry</h3>
+            <h3>📞 Contact</h3>
 
             <p>
-                For admission related information,
-                please contact the school office.
+                Phone:
+                <strong>9304485717</strong>
             </p>
 
-            <a href="tel:+91XXXXXXXXXX"
-               class="btn btn-primary">
-                Call School
-            </a>
+            <p>
+                WhatsApp:
+                <strong>9304485717</strong>
+            </p>
+
+            <p>
+                Email:
+                Currently unavailable
+            </p>
+
+            <div class="contact-actions">
+
+                <a
+                    href="tel:+919304485717"
+                    class="btn btn-green">
+
+                    📞 Call
+
+                </a>
+
+                <a
+                    href="https://wa.me/919304485717"
+                    target="_blank"
+                    class="btn whatsapp">
+
+                    💬 WhatsApp
+
+                </a>
+
+            </div>
 
         </div>
 
     </div>
 
-</section>
+</div>
 
+</section>
 
 <!-- ================= FOOTER ================= -->
 
 <footer>
 
-    <div class="footer-grid">
+<div class="footer-grid">
 
-        <div>
+    <div>
 
-            <h3>🌻 Sunflower Residential School</h3>
+        <h3>🌻 Sunflower Residential School</h3>
 
-            <p>
-                Education • Discipline • Excellence
-            </p>
+        <p>
+            Gidhani, Deoghar
+        </p>
 
-            <p>
-                Building confident, responsible and
-                successful individuals.
-            </p>
+        <p>
+            Education • Discipline • Excellence
+        </p>
 
-        </div>
-
-        <div>
-
-            <h3>Quick Links</h3>
-
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#academics">Academics</a></li>
-                <li><a href="#residential">Residential</a></li>
-                <li><a href="#notices">Notices</a></li>
-            </ul>
-
-        </div>
-
-        <div>
-
-            <h3>Portal</h3>
-
-            <ul>
-                <li><a href="#portal">Homework</a></li>
-                <li><a href="#portal">Attendance</a></li>
-                <li><a href="#portal">Complaint</a></li>
-                <li><a href="#portal">Fees</a></li>
-            </ul>
-
-        </div>
-
-        <div>
-
-            <h3>Contact</h3>
-
-            <p>📞 +91 XXXXX XXXXX</p>
-            <p>✉️ school@example.com</p>
-            <p>📍 School Address</p>
-
-        </div>
+        <p>
+            Building confident, responsible and
+            capable students.
+        </p>
 
     </div>
 
-    <div class="copyright">
+    <div>
 
-        © 2026 Sunflower Residential School.
-        All Rights Reserved.
+        <h3>Quick Links</h3>
+
+        <ul>
+
+            <li><a href="#about">About</a></li>
+            <li><a href="#academics">Academics</a></li>
+            <li><a href="#residential">Residential</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+
+        </ul>
 
     </div>
+
+    <div>
+
+        <h3>Student Services</h3>
+
+        <ul>
+
+            <li><a href="#homework">Homework</a></li>
+            <li><a href="#complaint">Complaint</a></li>
+            <li><a href="#portal">Portal</a></li>
+            <li><a href="#notices">Notices</a></li>
+
+        </ul>
+
+    </div>
+
+    <div>
+
+        <h3>Contact</h3>
+
+        <p>📞 9304485717</p>
+        <p>💬 WhatsApp Available</p>
+        <p>📍 Gidhani, Deoghar</p>
+
+    </div>
+
+</div>
+
+<div class="copyright">
+
+    © 2026 Sunflower Residential School.
+    All Rights Reserved.
+
+</div>
 
 </footer>
 
-
-<!-- ================= JAVASCRIPT ================= -->
-
 <script>
 
-function toggleMenu() {
+function toggleMenu(){
 
     const menu = document.getElementById("navLinks");
 
@@ -1073,16 +1743,22 @@ function toggleMenu() {
 
 }
 
-document.querySelectorAll(".nav-links a").forEach(link => {
+document.querySelectorAll(".nav-links a").forEach(function(link){
 
-    link.addEventListener("click", () => {
+    link.addEventListener("click",function(){
 
         document.getElementById("navLinks")
-            .classList.remove("active");
+        .classList.remove("active");
 
     });
 
 });
+
+function demoMessage(message){
+
+    alert(message);
+
+}
 
 </script>
 
